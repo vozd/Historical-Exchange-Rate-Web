@@ -1,0 +1,49 @@
+﻿@model FormViewModel
+
+@{
+    ViewBag.Title = "Contact us";
+}
+
+
+    <div class="col-md-6 offset-md-3">
+        <div class="card card-body bg-light">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                    <label asp-for="Currency">Currency:</label>
+                    <input asp-for="Currency" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BaseCurrency">Base Currency:</label>
+                    <input asp-for="BaseCurrency" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Dates">Dates coma separated:</label>
+                    <textarea rows="4" asp-for="Dates" class="form-control"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa-envelope"></i>Get Historical Exchange Rate</button>
+                    @*<div class="text-success">@ViewBag.UserMessage</div>*@
+                </div>
+
+                @if (@Model.Result != null)
+                {
+                    <div>
+                        <ul>
+                            <li>@Model.Result.MaximumExchangeRate</li>
+                            <li>@Model.Result.MinimumExchangeRate</li>
+                            <li>@Model.Result.AverageRate</li>
+                        </ul>
+                    </div>
+                }
+            </form>
+        </div>
+
+       
+
+    </div>
+
